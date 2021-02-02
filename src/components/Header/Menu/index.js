@@ -1,18 +1,16 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback } from 'react';
 import { Link } from "react-router-dom";
 import Switch from "react-switch";
 import swal from 'sweetalert';
-import { ThemeContext } from 'styled-components';
 
 import useAuth from '../../../hooks/useAuth';
+import useTheme from '../../../hooks/useTheme';
 
 import { Container, Nav, LinkContainer, SwitchContainer } from './styles';
 
-const HeaderMenu = ({ toogleTheme }) => {
-  const { colors, title } = useContext(ThemeContext);
+const HeaderMenu = () => {
+  const { colors, title, toogleTheme } = useTheme();
   const { signOut } = useAuth();
-
-  const [check, setCheck] = useState(false);
 
   const handleSignOut = useCallback(async () => {
     const response = await swal({
@@ -21,10 +19,8 @@ const HeaderMenu = ({ toogleTheme }) => {
       icon: 'warning',
       buttons: ['Não', 'Sim'],
     });
-  
-    if (response) {
-      signOut();
-    }
+
+    response && signOut();
   }, [signOut]);
 
   return (

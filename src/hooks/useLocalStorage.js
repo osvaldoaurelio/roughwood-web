@@ -1,32 +1,21 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
-const useLocalStorage = (key, defaultValue = null) => {
-  const storageValue = localStorage.getItem(key);console.log(storageValue)
-  
-  const initValue = storageValue ? JSON.parse(storageValue) : null;
+const useLocalStorage = (key, initialState = null) => {
+  const [state, setState] = useState(() => {
+    const storageValue = localStorage.getItem(key);
 
-  const [value, setValue] = useState(initValue);
-console.log(value);
+    return storageValue ? JSON.parse(storageValue) : initialState;
+  });
+
   useEffect(() => {
-    if (defaultValue) {
-      localStorage.setItem(key, JSON.stringify(defaultValue));
-      setValue(defaultValue);
+    if (state) {
+      localStorage.setItem(key, JSON.stringify(state));
+    } else {
+      localStorage.removeItem(key);
     }
-  }, [key, defaultValue]);
+  }, [key, state]);
 
-  const updatingValue = useCallback(newValue => {
-    localStorage.setItem(key, JSON.stringify(newValue));
-
-    return setValue(newValue);
-  }, [key]);
-
-  const removingValue = useCallback(() => {
-    localStorage.removeItem(key);
-
-    return setValue(null);
-  }, [key]);
-
-  return [value, updatingValue, removingValue];
+  return [state, setState];
 };
 
 export default useLocalStorage;

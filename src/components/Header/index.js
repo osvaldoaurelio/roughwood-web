@@ -8,7 +8,7 @@ import HeaderProfile from "./Profile";
 import HeaderMenu from './Menu';
 import HeaderFooter from "./Footer";
 
-const Header = ({ toogleTheme }) => {
+const Header = () => {
   const { pathname } = useLocation();
   const { signed } = useAuth();
 
@@ -20,7 +20,7 @@ const Header = ({ toogleTheme }) => {
       <Container>
         <HeaderProfile />
         <hr />
-        <HeaderMenu toogleTheme={toogleTheme}/>
+        <HeaderMenu />
         <hr />
         <HeaderFooter />
       </Container>

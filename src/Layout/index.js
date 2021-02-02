@@ -2,9 +2,9 @@ import Header from '../components/Header';
 
 import { Container, Main } from './styles';
 
-const Layout = ({ toogleTheme, children }) => (
+const Layout = ({ children }) => (
   <Container>
-    <Header toogleTheme={toogleTheme}/>
+    <Header />
     <Main>
       {children}
     </Main>

@@ -10,9 +10,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [storageUser, setStorageUser, removeStorageUser] = useLocalStorage('@roughwood:user');
-  const [storageToken, setStorageToken, removeStorageToken] = useLocalStorage('@roughwood:token');
-console.log('storageUser', storageUser);
+  const [storageUser, setStorageUser] = useLocalStorage('@roughwood:user');
+  const [storageToken, setStorageToken] = useLocalStorage('@roughwood:token');
+
   useEffect(() => {
     if (storageUser && storageToken) {
       setUser(storageUser);
@@ -54,11 +54,11 @@ console.log('storageUser', storageUser);
     await new Promise(resolve => setTimeout(resolve, 100));
     setLoading(true);
     setError(null);
-    removeStorageUser();
-    removeStorageToken();
+    setStorageUser(null);
+    setStorageToken(null);
     setUser(null);
     setLoading(false);
-  }, [removeStorageUser, removeStorageToken]);
+  }, [setStorageUser, setStorageToken]);
 
   return (
     <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, signOut, loading, error }}>
