@@ -25,7 +25,7 @@ const SignUp = () => {
     password: '',
     inputErr: '',
   });
-  const { signed, signUp, loading, error } = useAuth();
+  const { signUp, loading, error } = useAuth();
 
   const handleInputChange = useCallback(event => {
     const { name, value } = event.target;
@@ -47,10 +47,6 @@ const SignUp = () => {
     }
     signUp({ name, username, password });
   }, [signUp, values]);
-
-  if (signed) {
-    return <Redirect to="/user" />;
-  }
 
   return (
     <Container>

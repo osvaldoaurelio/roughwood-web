@@ -1,28 +1,27 @@
 import { useLocation } from "react-router-dom";
 
+import Profile from "./Profile";
+import Menu from "./Menu";
+import Footer from "./Footer";
+
 import useAuth from "../../hooks/useAuth";
 
 import { Container } from "./styles";
 
-import HeaderProfile from "./Profile";
-import HeaderMenu from './Menu';
-import HeaderFooter from "./Footer";
-
 const Header = () => {
   const { pathname } = useLocation();
-  const { signed } = useAuth();
+  const { isUserSignedIn } = useAuth();
 
-
-  const fullScreenPath = ["/signin", "/signup"];
+  const publicPaths = ["/signin", "/signup"];
+  const isPrivateRoute = !publicPaths.includes(pathname);
 
   return (
-    !fullScreenPath.includes(pathname) && signed && (
+    isPrivateRoute &&
+    isUserSignedIn && (
       <Container>
-        <HeaderProfile />
-        <hr />
-        <HeaderMenu />
-        <hr />
-        <HeaderFooter />
+        <Profile />
+        <Menu />
+        <Footer />
       </Container>
     )
   );

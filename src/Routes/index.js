@@ -5,13 +5,13 @@ import PublicRoutes from "./public.route";
 import PrivateRoutes from "./private.route";
 
 const Routes = () => {
-  const { signed, loading } = useAuth();
+  const { isUserSignedIn, loading } = useAuth();
 
   if (loading) {
     return <LoaderSpinner size={300} />;
   }
 
-  return signed ? <PrivateRoutes /> : <PublicRoutes />;
+  return isUserSignedIn ? <PrivateRoutes /> : <PublicRoutes />;
 };
 
 export default Routes;

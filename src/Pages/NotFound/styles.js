@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const NotFoundText = styled.p`
-  color: #333a;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 2.5vw;
   font-weight: bold;
   width: 50%;

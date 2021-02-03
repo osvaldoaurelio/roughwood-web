@@ -1,20 +1,44 @@
-import { Container, Avatar, TextContainer, TextRule, TextName } from "./styles";
+import Switch from "react-switch";
+import { FaMoon, FaSun } from 'react-icons/fa';
+
+import { Container, SwitchContainer, Avatar, TextContainer, TextRule, TextName } from "./styles";
+
 import useAuth from "../../../hooks/useAuth";
+import useTheme from '../../../hooks/useTheme';
 
-import avatar from '../../../assets/img/screenLoading.gif';
+import avatar from "../../../assets/img/screenLoading.gif";
 
-const HeaderProfile = () => {
+const Profile = () => {
   const { user } = useAuth();
+  const { colors, title, toogleTheme } = useTheme();
 
   return (
-    <Container>
-      <Avatar src={avatar} alt="avatar" />
-      <TextContainer>
-        <TextRule>Admin</TextRule>
-        <TextName>{user?.name}</TextName>
-      </TextContainer>
-    </Container>
+    <>
+      <Container>
+        <SwitchContainer title="Clique para alterar entre o tema dark e light">
+          <FaSun onClick={toogleTheme} />
+          <Switch
+            checked={title === 'dark'}
+            onChange={toogleTheme}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={20}
+            offColor={colors.background}
+            onColor={colors.secondary}
+          />
+          <FaMoon onClick={toogleTheme} />
+        </SwitchContainer>
+        <Avatar src={avatar} alt="avatar" />
+        <TextContainer>
+          <TextRule>Admin</TextRule>
+          <TextName>{user.name}</TextName>
+        </TextContainer>
+      </Container>
+      <hr />
+    </>
   );
-}
+};
 
-export default HeaderProfile;
+export default Profile;

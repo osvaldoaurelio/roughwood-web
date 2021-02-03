@@ -8,8 +8,9 @@ const PrivateRoutes = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
     <Route path="/user" component={User} />
+    <Route path="/customers" component={User} />
     <Route path={["/signup", "/signin"]}>
-      <Redirect to="/" />
+      <Redirect to="/"/>
     </Route>
     <Route path="*" component={NotFound} />
   </Switch>

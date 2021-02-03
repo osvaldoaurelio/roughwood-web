@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { useCallback, useState } from "react";
+import { Redirect, Link } from "react-router-dom";
 
 import {
   Container,
@@ -11,49 +11,57 @@ import {
   NotFoundError,
   NoInputError,
   Button,
-  ActionContainer
-} from './styles';
+  ActionContainer,
+} from "./styles";
 
-import useAuth from '../../hooks/useAuth';
-import LoaderSpinner from '../../components/LoaderSpinner';
-import logo from '../../assets/img/logo.png';
+import useAuth from "../../hooks/useAuth";
+import LoaderSpinner from "../../components/LoaderSpinner";
+import logo from "../../assets/img/logo.png";
 
 const SignIn = () => {
   const [values, setValues] = useState({
-    username: '',
-    password: '',
-    inputErr: '',
+    username: "",
+    password: "",
+    inputErr: "",
   });
-  const { signed, signIn, loading, error } = useAuth();
+  const { isUserSignedIn, signIn, loading, error } = useAuth();
 
-  const handleInputChange = useCallback(event => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value, inputErr: '' });
-  }, [values]);
+  const handleInputChange = useCallback(
+    (event) => {
+      const { name, value } = event.target;
+      setValues({ ...values, [name]: value, inputErr: "" });
+    },
+    [values]
+  );
 
-  const handleSignIn = useCallback(event => {
-    event.preventDefault();
-    const { username, password } = values;
+  const handleSignIn = useCallback(
+    (event) => {
+      event.preventDefault();
+      const { username, password } = values;
 
-    if (username.includes(' ')) {
-      return setValues({ ...values, inputErr: 'Não é permitido espaços no Username' });
-    }
-    if (!username || !password) {
-      return setValues({ ...values, inputErr: 'Preenchimento obrigatório' });
-    }
-    signIn({ username, password });
-  }, [signIn, values]);
-
-  if (signed) {
-    return <Redirect to="/user" />;
-  }
+      if (username.includes(" ")) {
+        return setValues({
+          ...values,
+          inputErr: "Não é permitido espaços no Username",
+        });
+      }
+      if (!username || !password) {
+        return setValues({ ...values, inputErr: "Preenchimento obrigatório" });
+      }
+      signIn({ username, password });
+    },
+    [signIn, values]
+  );
 
   return (
     <Container>
       <Form onSubmit={handleSignIn}>
         <Title>
           <img src={logo} alt="logo" />
-          <p>Móveis planejados <br />Entrar no sistema</p>
+          <p>
+            Móveis planejados <br />
+            Entrar no sistema
+          </p>
         </Title>
         <ErrorContainer>
           <NotFoundError error={error}>{error?.data.error}</NotFoundError>
@@ -77,7 +85,11 @@ const SignIn = () => {
           value={values.password}
           onChange={handleInputChange}
         />
-        <Button type="submit" title="Clique para entrar no sistema" disabled={loading}>
+        <Button
+          type="submit"
+          title="Clique para entrar no sistema"
+          disabled={loading}
+        >
           {loading ? <LoaderSpinner title="Aguarde..." /> : "Entrar"}
         </Button>
         <ActionContainer>

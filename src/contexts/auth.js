@@ -60,8 +60,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, [setStorageUser, setStorageToken]);
 
+  const isUserSignedIn = !!user;
+
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, signOut, loading, error }}>
+    <AuthContext.Provider value={{ isUserSignedIn, user, signIn, signUp, signOut, loading, error }}>
       {children}
     </AuthContext.Provider>
   );

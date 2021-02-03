@@ -3,7 +3,7 @@ import api from "../services/api";
 export const signInService = async ({ username, password }) => {
   const payload = { session: { username, password } };
   const { data: { token, user } } = await api.post('sessions/admin', payload);
-  await new Promise(resolve => setTimeout(resolve, 300));
+
   return { token, user };
 };
 

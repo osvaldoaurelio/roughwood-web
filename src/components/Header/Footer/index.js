@@ -1,11 +1,14 @@
-import { Footer, FooterImage } from "./styles";
+import { Container, Image } from "./styles";
 
-import logo from '../../../assets/img/logo.png';
+import logo from "../../../assets/img/logo.png";
 
-const HeaderFooter = () => (
-  <Footer>
-    <FooterImage src={logo} alt="logo" />
-  </Footer>
+const Footer = () => (
+  <>
+    <hr />
+    <Container>
+      <Image src={logo} alt="logo" />
+    </Container>
+  </>
 );
 
-export default HeaderFooter;
+export default Footer;

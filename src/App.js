@@ -1,23 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
 
-import { AuthProvider } from "./contexts/auth";
-import { ThemeProvider } from "./contexts/theme";
-
-import Layout from "./Layout";
-import Routes from "./Routes/";
-
 import { GlobalStyle } from "./styles/global";
+
+import Providers from './contexts';
+import Layout from "./Layout";
 
 const App = () => (
   <BrowserRouter>
-    <ThemeProvider>
+    <Providers>
       <GlobalStyle />
-      <AuthProvider>
-        <Layout>
-          <Routes />
-        </Layout>
-      </AuthProvider>
-    </ThemeProvider>
+      <Layout />
+    </Providers>
   </BrowserRouter>
 );
 

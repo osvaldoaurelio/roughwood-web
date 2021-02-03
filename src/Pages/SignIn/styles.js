@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,9 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  background-color: #fff;
+  background-color: ${({ theme }) => {
+    return theme.title === 'light' ? '#fff' : theme.colors.primary
+  }};
   width: 100%;
   max-width: 445px;
   padding: 2.5rem;
@@ -20,15 +22,15 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h1`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   img {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
   }
 
   p {
-    color: #666;
+    color: ${({ theme }) => theme.colors.text};
     text-align: center;
   }
 `;
@@ -45,7 +47,6 @@ export const NoInputError = styled.p`
   display: ${({ error }) => error ? 'block' : 'none'};
 `;
 
-
 export const Input = styled.input`
   font-size: 20px;
   line-height: 24px;
@@ -55,11 +56,16 @@ export const Input = styled.input`
   width: 100%;
   border-radius: 4px;
   outline: none;
+  background-color: ${({ theme }) => {
+    return theme.title === 'light' ? '#fff' : '#ccc';
+  }};
   border-color: ${({ error, value }) => error && !value ? '#e81123': 'none'};
 `;
 
 export const Button = styled.button`
-  background-color: #666;
+  background-color: ${({ theme }) => {
+    return theme.title === 'light' ? theme.colors.primary : theme.colors.secondary;
+  }};
   color: #fff;
   font-size: 20px;
   line-height: 24px;
@@ -80,7 +86,7 @@ export const ActionContainer = styled.div`
   a {
     text-decoration: underline;
     transition: all .3s;
-    color: #333;
+    color: ${({ theme }) => theme.colors.text};
 
      &:hover {
        text-decoration: none;
@@ -90,10 +96,10 @@ export const ActionContainer = styled.div`
 `;
 
 export const FormFooter = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.background};
   width: 100%;
   max-width: 445px;
   text-align: center;
-  color: #fff;
-  padding: 24px 0;
+  color: ${({ theme }) => theme.colors.text};
+  padding: 20px 0;
 `;

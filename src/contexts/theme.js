@@ -1,14 +1,14 @@
 import { createContext, useCallback } from "react";
 import {
-  ThemeProvider as Provider,
-  ThemeContext as Context,
+  ThemeProvider as StyledComponentsProvider,
+  ThemeContext as StyledComponentsContext,
 } from "styled-components";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 
 import { dark, light } from "../styles/themes";
 
-const ThemeContext = createContext(Context);
+const ThemeContext = createContext(StyledComponentsContext);
 
 export const ThemeProvider = ({ children }) => {
   const [storageTheme, setStorageTheme] = useLocalStorage("@roughwood:theme", light);
@@ -16,14 +16,13 @@ export const ThemeProvider = ({ children }) => {
   const toogleTheme = useCallback(() => {
     setStorageTheme(storageTheme.title === "light" ? dark : light);
   },[storageTheme, setStorageTheme]);
-  console.log(storageTheme)
 
   return (
-    <Provider theme={storageTheme}>
+    <StyledComponentsProvider theme={storageTheme}>
       <ThemeContext.Provider value={{ toogleTheme, ...storageTheme }}>
         {children}
       </ThemeContext.Provider>
-    </Provider>
+    </StyledComponentsProvider>
   );
 };
 

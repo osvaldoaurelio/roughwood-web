@@ -1,15 +1,12 @@
 import { useCallback } from 'react';
-import { Link } from "react-router-dom";
-import Switch from "react-switch";
+import { NavLink } from "react-router-dom";
 import swal from 'sweetalert';
 
 import useAuth from '../../../hooks/useAuth';
-import useTheme from '../../../hooks/useTheme';
 
-import { Container, Nav, LinkContainer, SwitchContainer } from './styles';
+import { Container, Nav, LinkContainer } from './styles';
 
-const HeaderMenu = () => {
-  const { colors, title, toogleTheme } = useTheme();
+const Menu = () => {
   const { signOut } = useAuth();
 
   const handleSignOut = useCallback(async () => {
@@ -27,39 +24,50 @@ const HeaderMenu = () => {
     <Container>
       <Nav>
         <LinkContainer>
-          <Link to="/" title="Clique para viaualizar o Dashboard">Dashboard</Link>
+          <NavLink
+            to="/"
+            exact
+            activeClassName="active-link"
+            title="Clique para visualizar o Dashboard"
+          >Dashboard</NavLink>
         </LinkContainer>
         <LinkContainer>
-          <Link to="/customers" title="Clique para gerenciar Clientes">Clientes</Link>
+          <NavLink
+            to="/customers"
+            activeClassName="active-link"
+            title="Clique para gerenciar Clientes"
+          >Clientes</NavLink>
         </LinkContainer>
         <LinkContainer>
-          <Link to="/orders" title="Clique para gerenciar Ordens de Serviços">Ordens de Serviços</Link>
+          <NavLink
+            to="/orders"
+            activeClassName="active-link"
+            title="Clique para gerenciar Ordens de Serviços"
+          >Ordens de Serviços</NavLink>
         </LinkContainer>
         <LinkContainer>
-          <Link to="/employees" title="Clique para gerenciar Funcionários">Funcionários</Link>
+          <NavLink
+            to="/employees"
+            activeClassName="active-link"
+            title="Clique para gerenciar Funcionários"
+          >Funcionários</NavLink>
         </LinkContainer>
         <LinkContainer>
-          <Link to="/materials" title="Clique para gerenciar Estoque">Estoque</Link>
+          <NavLink
+            to="/materials"
+            activeClassName="active-link"
+            title="Clique para gerenciar Estoque"
+          >Estoque</NavLink>
         </LinkContainer>
         <LinkContainer onClick={handleSignOut}>
-          <Link to="#" title="Clique para sair do sistema">Sair</Link>
+          <NavLink
+            to="#"
+            title="Clique para sair do sistema"
+          >Sair</NavLink>
         </LinkContainer>
       </Nav>
-      <SwitchContainer>
-        <Switch
-          checked={title === 'dark'}
-          onChange={toogleTheme}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
-          offColor={colors.background}
-          onColor={colors.secondary}
-        />
-      </SwitchContainer>
     </Container>
   );
 };
 
-export default HeaderMenu;
+export default Menu;

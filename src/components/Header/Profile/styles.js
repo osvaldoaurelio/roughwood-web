@@ -7,6 +7,14 @@ export const Container = styled.div`
   padding: 1rem 0;
 `;
 
+export const SwitchContainer = styled.div`
+  display: flex;
+  width: 120px;
+  margin-bottom: 1.25rem;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 export const Avatar = styled.img`
   width: 72px;
   height: 72px;

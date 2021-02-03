@@ -26,5 +26,3 @@ export const LinkContainer = styled.div`
     }
   }
 `;
-
-export const SwitchContainer = styled.div``;
