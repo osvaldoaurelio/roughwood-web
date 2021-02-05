@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback } from 'react';
 
-import useAuth from "../../hooks/useAuth";
+import useAuth from '../../hooks/useAuth';
 
-import LoaderSpinner from "../../components/LoaderSpinner";
+import LoaderSpinner from '../../components/LoaderSpinner';
 
 const User = () => {
   const { user, signOut, loading } = useAuth();

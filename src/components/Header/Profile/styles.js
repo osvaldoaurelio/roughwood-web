@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ export const Avatar = styled.img`
 export const TextContainer = styled.div``;
 
 export const TextRule = styled.p`
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   text-align: center;
   font-weight: 400;
   font-size: 18px;

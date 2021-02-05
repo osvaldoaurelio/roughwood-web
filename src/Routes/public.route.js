@@ -1,7 +1,7 @@
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import SignIn from "../Pages/SignIn";
-import SignUp from "../Pages/SignUp";
+import SignIn from '../Pages/SignIn';
+import SignUp from '../Pages/SignUp';
 
 const PublicRoutes = () => (
   <Switch>

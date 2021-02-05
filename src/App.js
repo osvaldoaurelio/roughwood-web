@@ -1,15 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
-
-import { GlobalStyle } from "./styles/global";
+import { BrowserRouter } from 'react-router-dom';
 
 import Providers from './contexts';
-import Layout from "./Layout";
+import Layout from './Layout';
+
+import { GlobalStyle } from './styles/global';
 
 const App = () => (
   <BrowserRouter>
     <Providers>
-      <GlobalStyle />
       <Layout />
+      <GlobalStyle />
     </Providers>
   </BrowserRouter>
 );

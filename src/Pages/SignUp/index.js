@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -11,11 +11,10 @@ import {
   AlreadyExistError,
   NoInputError,
   Button,
-  ActionContainer
+  ActionContainer,
 } from './styles';
 
 import useAuth from '../../hooks/useAuth';
-import LoaderSpinner from '../../components/LoaderSpinner';
 import logo from '../../assets/img/logo.png';
 
 const SignUp = () => {
@@ -25,41 +24,59 @@ const SignUp = () => {
     password: '',
     inputErr: '',
   });
-  const { signUp, loading, error } = useAuth();
+  const { signUp, error } = useAuth();
 
-  const handleInputChange = useCallback(event => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value, inputErr: '' });
-  }, [values]);
+  const handleInputChange = useCallback(
+    event => {
+      const { name, value } = event.target;
+      setValues({ ...values, [name]: value, inputErr: '' });
+    },
+    [values]
+  );
 
-  const handleSignUp = useCallback(event => {
-    event.preventDefault();
-    const { name, username, password } = values;
+  const handleSignUp = useCallback(
+    event => {
+      event.preventDefault();
+      const { name, username, password } = values;
 
-    if (name.length < 3) {
-      return setValues({ ...values, inputErr: 'Informe um nome com mais de 2 letras' });
-    }
-    if (username.includes(' ')) {
-      return setValues({ ...values, inputErr: 'Não é permitido espaços no Username' });
-    }
-    if (!username || !password) {
-      return setValues({ ...values, inputErr: 'Preenchimento obrigatório' });
-    }
-    signUp({ name, username, password });
-  }, [signUp, values]);
+      if (name.length < 3) {
+        return setValues({
+          ...values,
+          inputErr: 'Informe um nome com mais de 2 letras',
+        });
+      }
+      if (username.includes(' ')) {
+        return setValues({
+          ...values,
+          inputErr: 'Não é permitido espaços no Username',
+        });
+      }
+      if (!username || !password) {
+        return setValues({ ...values, inputErr: 'Preenchimento obrigatório' });
+      }
+      signUp({ name, username, password });
+    },
+    [signUp, values]
+  );
 
   return (
     <Container>
       <Form onSubmit={handleSignUp}>
         <Title>
           <img src={logo} alt="logo" />
-          <p>Móveis planejados <br />Criar uma nova conta</p>
+          <p>
+            Móveis planejados <br />
+            Criar uma nova conta
+          </p>
         </Title>
         <ErrorContainer>
-          <AlreadyExistError error={error}>{error?.data.error}</AlreadyExistError>
+          <AlreadyExistError error={error}>
+            {error?.data.error}
+          </AlreadyExistError>
           <NoInputError error={values.inputErr}>{values.inputErr}</NoInputError>
         </ErrorContainer>
         <Input
+          autoFocus={true}
           name="name"
           placeholder="Nome"
           title="Digite um Nome"
@@ -86,12 +103,15 @@ const SignUp = () => {
           value={values.password}
           onChange={handleInputChange}
         />
-        <Button type="submit" title="Clique para criar a conta" disabled={loading}>
-          {loading ? <LoaderSpinner title="Aguarde..." /> : "Criar"}
+        <Button type="submit" title="Clique para criar a conta">
+          Criar
         </Button>
         <ActionContainer>
           <p></p>
-          <Link to="/signin" title="Use uma conta existente para entrar no sistema">
+          <Link
+            to="/signin"
+            title="Use uma conta existente para entrar no sistema"
+          >
             Entrar com uma conta existente
           </Link>
         </ActionContainer>

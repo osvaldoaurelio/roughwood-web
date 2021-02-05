@@ -3,9 +3,7 @@ import { AuthProvider } from './auth';
 
 const Providers = ({ children }) => (
   <ThemeProvider>
-    <AuthProvider>
-      {children}
-    </AuthProvider>
+    <AuthProvider>{children}</AuthProvider>
   </ThemeProvider>
 );
 

@@ -1,8 +1,8 @@
-import useAuth from "../hooks/useAuth";
-import LoaderSpinner from "../components/LoaderSpinner";
+import useAuth from '../hooks/useAuth';
+import LoaderSpinner from '../components/LoaderSpinner';
 
-import PublicRoutes from "./public.route";
-import PrivateRoutes from "./private.route";
+import PublicRoutes from './public.route';
+import PrivateRoutes from './private.route';
 
 const Routes = () => {
   const { isUserSignedIn, loading } = useAuth();

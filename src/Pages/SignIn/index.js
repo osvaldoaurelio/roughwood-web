@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -12,41 +12,40 @@ import {
   NoInputError,
   Button,
   ActionContainer,
-} from "./styles";
+} from './styles';
 
-import useAuth from "../../hooks/useAuth";
-import LoaderSpinner from "../../components/LoaderSpinner";
-import logo from "../../assets/img/logo.png";
+import useAuth from '../../hooks/useAuth';
+import logo from '../../assets/img/logo.png';
 
 const SignIn = () => {
   const [values, setValues] = useState({
-    username: "",
-    password: "",
-    inputErr: "",
+    username: '',
+    password: '',
+    inputErr: '',
   });
-  const { isUserSignedIn, signIn, loading, error } = useAuth();
+  const { signIn, error } = useAuth();
 
   const handleInputChange = useCallback(
-    (event) => {
+    event => {
       const { name, value } = event.target;
-      setValues({ ...values, [name]: value, inputErr: "" });
+      setValues({ ...values, [name]: value, inputErr: '' });
     },
     [values]
   );
 
   const handleSignIn = useCallback(
-    (event) => {
+    event => {
       event.preventDefault();
       const { username, password } = values;
 
-      if (username.includes(" ")) {
+      if (username.includes(' ')) {
         return setValues({
           ...values,
-          inputErr: "Não é permitido espaços no Username",
+          inputErr: 'Não é permitido espaços no Username',
         });
       }
       if (!username || !password) {
-        return setValues({ ...values, inputErr: "Preenchimento obrigatório" });
+        return setValues({ ...values, inputErr: 'Preenchimento obrigatório' });
       }
       signIn({ username, password });
     },
@@ -68,6 +67,7 @@ const SignIn = () => {
           <NoInputError error={values.inputErr}>{values.inputErr}</NoInputError>
         </ErrorContainer>
         <Input
+          autoFocus={true}
           name="username"
           placeholder="Username"
           title="Digite um Username"
@@ -85,12 +85,8 @@ const SignIn = () => {
           value={values.password}
           onChange={handleInputChange}
         />
-        <Button
-          type="submit"
-          title="Clique para entrar no sistema"
-          disabled={loading}
-        >
-          {loading ? <LoaderSpinner title="Aguarde..." /> : "Entrar"}
+        <Button type="submit" title="Clique para entrar no sistema">
+          Entrar
         </Button>
         <ActionContainer>
           <p title="Ainda não implementado">Esqueceu sua senha?</p>

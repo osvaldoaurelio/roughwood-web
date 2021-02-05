@@ -1,18 +1,18 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
-import Profile from "./Profile";
-import Menu from "./Menu";
-import Footer from "./Footer";
+import Profile from './Profile';
+import Menu from './Menu';
+import Footer from './Footer';
 
-import useAuth from "../../hooks/useAuth";
+import useAuth from '../../hooks/useAuth';
 
-import { Container } from "./styles";
+import { Container } from './styles';
 
 const Header = () => {
   const { pathname } = useLocation();
   const { isUserSignedIn } = useAuth();
 
-  const publicPaths = ["/signin", "/signup"];
+  const publicPaths = ['/signin', '/signup'];
   const isPrivateRoute = !publicPaths.includes(pathname);
 
   return (

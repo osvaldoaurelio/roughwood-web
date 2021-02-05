@@ -8,5 +8,5 @@ export default {
     background: '#27292a',
     text: '#ebeddf',
     textReverse: '#333',
-  }
+  },
 };

@@ -11,14 +11,14 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   background-color: ${({ theme }) => {
-    return theme.title === 'light' ? '#fff' : theme.colors.primary
+    return theme.title === 'light' ? '#fff' : theme.colors.primary;
   }};
   width: 100%;
   max-width: 445px;
   padding: 2.5rem;
   border-radius: 4px;
   border: 2px solid #cdd4d9;
-  box-shadow: 4px 4px rgba(6,41,66,0.1);
+  box-shadow: 4px 4px rgba(6, 41, 66, 0.1);
 `;
 
 export const Title = styled.h1`
@@ -26,7 +26,7 @@ export const Title = styled.h1`
 
   img {
     width: 100%;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   p {
@@ -39,12 +39,12 @@ export const ErrorContainer = styled.div``;
 
 export const NotFoundError = styled.p`
   color: #e81123;
-  display: ${({ error }) => error ? 'block' : 'none'};
+  display: ${({ error }) => (error ? 'block' : 'none')};
 `;
 
 export const NoInputError = styled.p`
   color: #e81123;
-  display: ${({ error }) => error ? 'block' : 'none'};
+  display: ${({ error }) => (error ? 'block' : 'none')};
 `;
 
 export const Input = styled.input`
@@ -59,12 +59,14 @@ export const Input = styled.input`
   background-color: ${({ theme }) => {
     return theme.title === 'light' ? '#fff' : '#ccc';
   }};
-  border-color: ${({ error, value }) => error && !value ? '#e81123': 'none'};
+  border-color: ${({ error, value }) => (error && !value ? '#e81123' : 'none')};
 `;
 
 export const Button = styled.button`
   background-color: ${({ theme }) => {
-    return theme.title === 'light' ? theme.colors.primary : theme.colors.secondary;
+    return theme.title === 'light'
+      ? theme.colors.primary
+      : theme.colors.secondary;
   }};
   color: #fff;
   font-size: 20px;
@@ -85,13 +87,13 @@ export const ActionContainer = styled.div`
 
   a {
     text-decoration: underline;
-    transition: all .3s;
+    transition: all 0.3s;
     color: ${({ theme }) => theme.colors.text};
 
-     &:hover {
-       text-decoration: none;
-       color: #666;
-     }
+    &:hover {
+      text-decoration: none;
+      color: #666;
+    }
   }
 `;
 

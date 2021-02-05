@@ -1,12 +1,19 @@
-import Switch from "react-switch";
+import Switch from 'react-switch';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
-import { Container, SwitchContainer, Avatar, TextContainer, TextRule, TextName } from "./styles";
+import {
+  Container,
+  SwitchContainer,
+  Avatar,
+  TextContainer,
+  TextRule,
+  TextName,
+} from './styles';
 
-import useAuth from "../../../hooks/useAuth";
+import useAuth from '../../../hooks/useAuth';
 import useTheme from '../../../hooks/useTheme';
 
-import avatar from "../../../assets/img/screenLoading.gif";
+import avatar from '../../../assets/img/screenLoading.gif';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -15,7 +22,7 @@ const Profile = () => {
   return (
     <>
       <Container>
-        <SwitchContainer title="Clique para alterar entre o tema dark e light">
+        <SwitchContainer title="Clique para alternar entre os temas dark/light">
           <FaSun onClick={toogleTheme} />
           <Switch
             checked={title === 'dark'}

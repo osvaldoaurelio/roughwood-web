@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 1.5rem 0;
@@ -18,8 +18,8 @@ export const LinkContainer = styled.div`
   a {
     text-decoration: none;
     display: block;
-    padding: .75rem 1rem;
-    transistion: all .3s;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s;
 
     &:hover {
       font-weight: 900;

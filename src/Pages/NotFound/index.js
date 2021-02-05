@@ -1,6 +1,6 @@
-import { Container, Img, NotFoundText } from "./styles";
+import { Container, Img, NotFoundText } from './styles';
 
-import img_404 from "../../assets/img/404.png";
+import img_404 from '../../assets/img/404.png';
 
 const NotFound = () => (
   <Container>
