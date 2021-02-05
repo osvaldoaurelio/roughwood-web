@@ -4,7 +4,7 @@ import Profile from './Profile';
 import Menu from './Menu';
 import Footer from './Footer';
 
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 
 import { Container } from './styles';
 

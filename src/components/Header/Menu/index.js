@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import swal from 'sweetalert';
 
-import useAuth from '../../../hooks/useAuth';
+import { useAuth } from '../../../hooks';
 
-import { Container, Nav, LinkContainer } from './styles';
+import { Container, Nav, NavItem } from './styles';
 
 const Menu = () => {
   const { signOut } = useAuth();
@@ -23,7 +23,7 @@ const Menu = () => {
   return (
     <Container>
       <Nav>
-        <LinkContainer>
+        <NavItem>
           <NavLink
             to="/"
             exact
@@ -32,8 +32,8 @@ const Menu = () => {
           >
             Dashboard
           </NavLink>
-        </LinkContainer>
-        <LinkContainer>
+        </NavItem>
+        <NavItem>
           <NavLink
             to="/customers"
             activeClassName="active-link"
@@ -41,8 +41,8 @@ const Menu = () => {
           >
             Clientes
           </NavLink>
-        </LinkContainer>
-        <LinkContainer>
+        </NavItem>
+        <NavItem>
           <NavLink
             to="/orders"
             activeClassName="active-link"
@@ -50,8 +50,8 @@ const Menu = () => {
           >
             Ordens de Serviços
           </NavLink>
-        </LinkContainer>
-        <LinkContainer>
+        </NavItem>
+        <NavItem>
           <NavLink
             to="/employees"
             activeClassName="active-link"
@@ -59,8 +59,8 @@ const Menu = () => {
           >
             Funcionários
           </NavLink>
-        </LinkContainer>
-        <LinkContainer>
+        </NavItem>
+        <NavItem>
           <NavLink
             to="/materials"
             activeClassName="active-link"
@@ -68,12 +68,12 @@ const Menu = () => {
           >
             Estoque
           </NavLink>
-        </LinkContainer>
-        <LinkContainer onClick={handleSignOut}>
+        </NavItem>
+        <NavItem onClick={handleSignOut}>
           <NavLink to="#" title="Clique para sair do sistema">
             Sair
           </NavLink>
-        </LinkContainer>
+        </NavItem>
       </Nav>
     </Container>
   );

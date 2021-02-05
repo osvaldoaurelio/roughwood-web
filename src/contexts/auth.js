@@ -3,7 +3,8 @@ import { createContext, useState, useEffect, useCallback } from 'react';
 import api from '../services/api';
 import { sleep } from '../utils';
 import { signInService, signUpService } from '../services/auth';
-import useLocalStorage from '../hooks/useLocalStorage';
+
+import { useLocalStorage } from '../hooks';
 
 const AuthContext = createContext({});
 

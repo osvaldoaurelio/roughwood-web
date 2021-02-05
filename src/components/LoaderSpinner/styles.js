@@ -7,11 +7,11 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const LoadingImage = styled.img`
+export const Image = styled.img`
   margin-right: 0.5rem;
   height: ${({ size }) => `${size}px`};
 `;
 
-export const LoadingTitle = styled.p`
+export const Title = styled.p`
   color: ${({ titleColor }) => titleColor};
 `;

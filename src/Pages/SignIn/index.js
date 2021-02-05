@@ -1,6 +1,9 @@
 import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../../hooks';
+import logo from '../../assets/img/logo.png';
+
 import {
   Container,
   Form,
@@ -13,9 +16,6 @@ import {
   Button,
   ActionContainer,
 } from './styles';
-
-import useAuth from '../../hooks/useAuth';
-import logo from '../../assets/img/logo.png';
 
 const SignIn = () => {
   const [values, setValues] = useState({

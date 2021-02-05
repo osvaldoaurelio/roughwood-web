@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import { Header } from '../components';
 import Routes from '../Routes';
 
 import { Container, Main } from './styles';

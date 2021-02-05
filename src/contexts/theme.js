@@ -4,7 +4,7 @@ import {
   ThemeContext as StyledComponentsContext,
 } from 'styled-components';
 
-import useLocalStorage from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks';
 
 import { dark, light } from '../styles/themes';
 

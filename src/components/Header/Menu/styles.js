@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const Nav = styled.nav``;
 
-export const LinkContainer = styled.div`
+export const NavItem = styled.div`
   margin-left: -1rem;
   margin-right: -1rem;
 

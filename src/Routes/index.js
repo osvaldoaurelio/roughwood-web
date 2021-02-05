@@ -1,5 +1,5 @@
-import useAuth from '../hooks/useAuth';
-import LoaderSpinner from '../components/LoaderSpinner';
+import { useAuth } from '../hooks';
+import { LoaderSpinner } from '../components';
 
 import PublicRoutes from './public.route';
 import PrivateRoutes from './private.route';

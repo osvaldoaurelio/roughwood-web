@@ -1,6 +1,10 @@
 import Switch from 'react-switch';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
+import { useAuth, useTheme } from '../../../hooks';
+
+import avatar from '../../../assets/img/avatar.gif';
+
 import {
   Container,
   SwitchContainer,
@@ -9,11 +13,6 @@ import {
   TextRule,
   TextName,
 } from './styles';
-
-import useAuth from '../../../hooks/useAuth';
-import useTheme from '../../../hooks/useTheme';
-
-import avatar from '../../../assets/img/avatar.gif';
 
 const Profile = () => {
   const { user } = useAuth();
