@@ -5,9 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
