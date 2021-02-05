@@ -13,7 +13,7 @@ import {
 import useAuth from '../../../hooks/useAuth';
 import useTheme from '../../../hooks/useTheme';
 
-import avatar from '../../../assets/img/screenLoading.gif';
+import avatar from '../../../assets/img/avatar.gif';
 
 const Profile = () => {
   const { user } = useAuth();
