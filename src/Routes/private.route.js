@@ -1,14 +1,14 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Dashboard from '../Pages/Dashboard';
-import User from '../Pages/User';
+import Customers from '../Pages/Customers';
 import NotFound from '../Pages/NotFound';
 
 const PrivateRoutes = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/user" component={User} />
-    <Route path="/customers" component={User} />
+    <Route path="/customers" component={Customers} />
+
     <Route path={['/signup', '/signin']}>
       <Redirect to="/" />
     </Route>

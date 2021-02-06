@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .active-link {
     background-color: ${({ theme }) => theme.colors.secondary};
-    font-weight: 900;
+    color: #334;
 
     &:hover {
       box-shadow: 0 0 32px #999 inset;
