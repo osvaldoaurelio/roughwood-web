@@ -38,5 +38,10 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #999;
       }
     }
+
+    .swal-icon--success__hide-corners,
+    .swal-icon--success::after, .swal-icon--success::before {
+      background-color: transparent;
+    }
   }
 `;

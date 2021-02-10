@@ -3,28 +3,28 @@ import { useHistory } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegTimesCircle } from 'react-icons/fa';
 
-import CustomersCard from './CustomersCard';
+import MaterialsCard from './MaterialsCard';
 import { LoaderSpinner } from '../../components';
 
-import { listCustomers } from '../../services/customer';
+import { listMaterials } from '../../services/material';
 
-import { Container, Header, Title, Action, Input, Button, NoCustomersFound, Body } from './styles';
+import { Container, Header, Title, Action, Input, Button, NoMaterialsFound, Body } from './styles';
 
-const Customers = () => {
+const Materials = () => {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState('');
-  const [customers, setCustomers] = useState([]);
+  const [materials, setMaterials] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleListCustomers = useCallback(
+  const handleListMaterials = useCallback(
     async term => {
       setLoading(true);
       setError(null);
 
       try {
-        const { customers } = await listCustomers(term);
-        setCustomers(customers);
+        const { materials } = await listMaterials(term);
+        setMaterials(materials);
       } catch ({ response }) {
         setError(response);
       } finally {
@@ -37,7 +37,7 @@ const Customers = () => {
     if (!searchTerm) setLoading(true);
 
     const delayDebounceFn = setTimeout(() => {
-      handleListCustomers(searchTerm);
+      handleListMaterials(searchTerm);
     }, 1000);
 
     return () => { clearTimeout(delayDebounceFn); };
@@ -52,23 +52,23 @@ const Customers = () => {
   return (
     <Container>
       <Header>
-        <Title>Clientes</Title>
+        <Title>Materiais</Title>
         <Action>
           <FaSearch size={20} />
           <Input
             type="text"
-            placeholder="Buscar clientes"
-            title="Clique para pesquisar clientes"
+            placeholder="Buscar materiais"
+            title="Clique para pesquisar materiais"
             value={searchTerm}
             onChange={handleSearchTerm}
           />
           {searchTerm && <FaRegTimesCircle onClick={() => setSearchTerm('')} size={20} title="Limpar" />}
           <Button
-            onClick={() => history.push('/customers/create')}
-            title="Clique para cadastrar um novo cliente"
+            onClick={() => history.push('/materials/create')}
+            title="Clique para cadastrar um novo material"
             type="button"
           >
-            Novo Cliente
+            Novo Material
           </Button>
         </Action>
       </Header>
@@ -76,15 +76,15 @@ const Customers = () => {
         {loading ? (
           <LoaderSpinner size={300} />
         ) : (
-          customers.length !== 0 ? (
-            <CustomersCard customers={customers} error={error} />
+          materials.length !== 0 ? (
+            <MaterialsCard materials={materials} error={error} />
           ) : (
-            <NoCustomersFound>
-              Nenhum cliente encontrado.
+            <NoMaterialsFound>
+              Nenhum material encontrado.
               {searchTerm
                 ? ' Mude o termo de busca ou limpe o campo para uma nova pequisa.'
-                : ' Para cadastrar um cliente clique no botão Novo Cliente.'}
-            </NoCustomersFound>
+                : ' Para cadastrar um material clique no botão Novo Material.'}
+            </NoMaterialsFound>
           )
         )}
       </Body>
@@ -92,4 +92,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Materials;

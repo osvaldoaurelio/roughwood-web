@@ -44,15 +44,6 @@ const Menu = () => {
         </NavItem>
         <NavItem>
           <NavLink
-            to="/orders"
-            activeClassName="active-link"
-            title="Clique para gerenciar Ordens de Serviços"
-          >
-            Ordens de Serviços
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
             to="/employees"
             activeClassName="active-link"
             title="Clique para gerenciar Funcionários"
@@ -62,11 +53,20 @@ const Menu = () => {
         </NavItem>
         <NavItem>
           <NavLink
+            to="/orders"
+            activeClassName="active-link"
+            title="Clique para gerenciar Ordens de Serviços"
+          >
+            Ordens de Serviços
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
             to="/materials"
             activeClassName="active-link"
-            title="Clique para gerenciar Estoque"
+            title="Clique para gerenciar Materiais"
           >
-            Estoque
+            Materiais
           </NavLink>
         </NavItem>
         <NavItem onClick={handleSignOut}>

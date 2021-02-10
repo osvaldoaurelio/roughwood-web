@@ -26,8 +26,8 @@ const SignIn = () => {
   const { signIn, error } = useAuth();
 
   const handleInputChange = useCallback(
-    event => {
-      const { name, value } = event.target;
+    ({ target }) => {
+      const { name, value } = target;
       setValues({ ...values, [name]: value, inputErr: '' });
     },
     [values]

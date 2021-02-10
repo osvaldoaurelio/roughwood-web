@@ -1,3 +1,4 @@
 import sleep from './sleep';
+import status from './status';
 
-export { sleep };
+export { sleep, status };

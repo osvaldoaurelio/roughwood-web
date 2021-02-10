@@ -18,14 +18,6 @@ module.exports = {
     'react'
   ],
   'rules': {
-    'indent': [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
     'quotes': [
       'error',
       'single'
@@ -34,6 +26,8 @@ module.exports = {
       'error',
       'always'
     ],
+    'no-unused-vars': 'off',
+    'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off'
   }
 };

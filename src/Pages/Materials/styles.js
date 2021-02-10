@@ -34,7 +34,7 @@ export const Action = styled.div`
 
   svg {
     position: absolute;
-    left: 63%;
+    left: 60%;
     cursor: pointer;
 
     &:first-child {
@@ -72,7 +72,7 @@ export const Button = styled.button`
   }
 `;
 
-export const NoCustomersFound = styled.div`
+export const NoMaterialsFound = styled.div`
   padding: 2rem 0;
   text-align: right;
   min-height: 75vh;

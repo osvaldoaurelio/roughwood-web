@@ -18,7 +18,7 @@ export const Header = styled.div`
 `;
 
 export const Body = styled.main`
-  height: 85vh;
+  max-height: 85vh;
   overflow-y: auto;
 `;
 
@@ -34,7 +34,7 @@ export const Action = styled.div`
 
   svg {
     position: absolute;
-    left: 63%;
+    left: 57%;
     cursor: pointer;
 
     &:first-child {
@@ -72,7 +72,7 @@ export const Button = styled.button`
   }
 `;
 
-export const NoCustomersFound = styled.div`
+export const NoEmployeesFound = styled.div`
   padding: 2rem 0;
   text-align: right;
   min-height: 75vh;
