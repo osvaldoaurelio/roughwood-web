@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { FaMapMarkerAlt, FaPhone, FaRegAddressCard, FaUserEdit } from 'react-icons/fa';
+
 import { LoaderSpinner } from '../../../components';
-import { useHistory } from 'react-router-dom';
 
 import {
   Avatar,
@@ -21,6 +22,7 @@ import {
 
 const CustomerEdit = ({ customer, setCustomer, ...props}) => {
   const history = useHistory();
+  const { pathname } = useLocation();
 
   const [initialState, setInitialState] = useState('');
   const [loading, setLoading] = useState(false);
@@ -112,7 +114,10 @@ const CustomerEdit = ({ customer, setCustomer, ...props}) => {
                 error={error || props.error}
                 name="cpf"
                 placeholder="CPF"
-                title="Digite o cpf do cliente"
+                disabled={pathname.includes('edit')}
+                title={pathname.includes('edit')
+                  ? 'Não pode ser alterado'
+                  : 'Digite o cpf do cliente'}
               />
             </CPF>
             <Address>

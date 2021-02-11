@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { FaFileAlt, FaFileContract, FaFileInvoiceDollar } from 'react-icons/fa';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FaFileAlt, FaFileContract, FaFileInvoiceDollar } from 'react-icons/fa';
 
 import { LoaderSpinner } from '../../../components';
 
@@ -90,7 +90,10 @@ const MaterialEdit = ({ material, setMaterial, ...props}) => {
                 error={props.error || error}
                 name="name"
                 placeholder="Nome"
-                title="Digite o nome do material"
+                disabled={pathname.includes('edit')}
+                title={pathname.includes('edit')
+                  ? 'Não pode ser alterado'
+                  : 'Digite o nome do material'}
               />
             </Name>
             <Description>
@@ -108,6 +111,7 @@ const MaterialEdit = ({ material, setMaterial, ...props}) => {
               <Price>
                 <FaFileInvoiceDollar size={24} />
                 <Input
+                  autoFocus={pathname.includes('edit')}
                   onChange={handleInputChange}
                   value={material?.price}
                   error={error || props.error}

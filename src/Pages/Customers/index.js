@@ -6,12 +6,15 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import CustomersCard from './CustomersCard';
 import { LoaderSpinner } from '../../components';
 
+import { useAuth } from '../../hooks';
 import { listCustomers } from '../../services/customer';
 
 import { Container, Header, Title, Action, Input, Button, NoCustomersFound, Body } from './styles';
 
 const Customers = () => {
   const history = useHistory();
+  const { signOut } = useAuth();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,6 +29,7 @@ const Customers = () => {
         const { customers } = await listCustomers(term);
         setCustomers(customers);
       } catch ({ response }) {
+        response.data?.error === 'Invalid JWT token' && signOut();
         setError(response);
       } finally {
         setLoading(false);

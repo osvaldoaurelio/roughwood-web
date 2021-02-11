@@ -6,12 +6,15 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import MaterialsCard from './MaterialsCard';
 import { LoaderSpinner } from '../../components';
 
+import { useAuth } from '../../hooks';
 import { listMaterials } from '../../services/material';
 
 import { Container, Header, Title, Action, Input, Button, NoMaterialsFound, Body } from './styles';
 
 const Materials = () => {
   const history = useHistory();
+  const { signOut } = useAuth();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [materials, setMaterials] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,6 +29,7 @@ const Materials = () => {
         const { materials } = await listMaterials(term);
         setMaterials(materials);
       } catch ({ response }) {
+        response.data?.error === 'Invalid JWT token' && signOut();
         setError(response);
       } finally {
         setLoading(false);

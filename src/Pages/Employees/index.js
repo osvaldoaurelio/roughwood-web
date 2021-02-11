@@ -6,12 +6,15 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import EmployeesCard from './EmployeesCard';
 import { LoaderSpinner } from '../../components';
 
+import { useAuth } from '../../hooks';
 import { listEmployees } from '../../services/employee';
 
 import { Container, Header, Title, Action, Input, Button, NoEmployeesFound, Body } from './styles';
 
 const Employees = () => {
   const history = useHistory();
+  const { signOut } = useAuth();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,6 +29,7 @@ const Employees = () => {
         const { employees } = await listEmployees(term);
         setEmployees(employees);
       } catch ({ response }) {
+        response.data?.error === 'Invalid JWT token' && signOut();
         setError(response);
       } finally {
         setLoading(false);

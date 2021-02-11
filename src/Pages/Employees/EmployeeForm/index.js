@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { FaMapMarkerAlt, FaPhone, FaRegAddressCard, FaUserEdit } from 'react-icons/fa';
-import { LoaderSpinner } from '../../../components';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FaMapMarkerAlt, FaPhone, FaRegAddressCard, FaUserEdit } from 'react-icons/fa';
+
+import { LoaderSpinner } from '../../../components';
 
 import {
   Avatar,
@@ -105,7 +106,7 @@ const EmployeeEdit = ({ employee, setEmployee, ...props}) => {
                 title="Digite o nome do funcionário"
               />
             </Name>
-            {pathname.includes('create') && <UserName>
+            <UserName>
               <FaRegAddressCard size={20} />
               <Input
                 onChange={handleInputChange}
@@ -113,9 +114,12 @@ const EmployeeEdit = ({ employee, setEmployee, ...props}) => {
                 error={error || props.error}
                 name="username"
                 placeholder="UserName"
-                title="Digite o username do funcionário"
+                disabled={pathname.includes('edit')}
+                title={pathname.includes('edit')
+                  ? 'Não pode ser alterado'
+                  : 'Digite o username do funcionário'}
               />
-            </UserName>}
+            </UserName>
             <Address>
               <FaMapMarkerAlt size={20} />
               <Input

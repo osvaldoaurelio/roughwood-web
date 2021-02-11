@@ -15,12 +15,12 @@ export const Card = styled.div`
   border-radius: 4px;
   border: 1px solid #666;
   background-color: ${({ theme }) => (theme.title === 'light' ? '#fff' : '#222')};
-  border-top: 8px solid ${({ color }) => color ? '#66BB6A' : '#999'};
+  border-top: 8px solid ${({ color }) => color};
   opacity: ${({ color }) => color ? 1 : 0.6};
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 0 4px ${({ color }) => color ? '#66BB6A' : '#999'};
+    box-shadow: 0 0 4px ${({ color }) => color};
   }
 `;
 
@@ -71,7 +71,7 @@ export const MaterialFooter = styled.div`
   font-size: 1.125rem;
   font-weight: 700;
   color: ${({ color }) => color};
-  background-color: ${({ color }) => color ? '#66BB6A' : '#999'};
+  background-color: ${({ color }) => color};
 
   p {
     text-align: center;

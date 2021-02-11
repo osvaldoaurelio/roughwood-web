@@ -156,7 +156,7 @@ const MaterialDetail = () => {
       </Header>
       <Main>
         <Card
-          color={material.is_active}
+          color={material.is_active ? '#66BB6A' : '#666'}
           title={`Para editar ou ${material.is_active ? 'des' : ''}ativar este material vá em Mais ações > Editar`}
           onClick={handleActiveMenu}
           data-id="menu"
@@ -185,7 +185,7 @@ const MaterialDetail = () => {
             <FaCalendarAlt size={24} />
             <p>{material.updated_at && `Atualizado há ${formatDistanceToNow(parseISO(material.updated_at), { locale })}`}</p>
           </Since>
-          <Footer color={material.is_active}>
+          <Footer color={material.is_active ? '#66BB6A' : '#666'}>
             <p>{material.is_active ? 'Ativo' : 'Inativo'}</p>
           </Footer>
         </Card>

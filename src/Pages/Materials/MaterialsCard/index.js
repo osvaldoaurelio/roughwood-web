@@ -28,7 +28,7 @@ const MaterialsCard = ({ materials, error }) => {
         ) : (
           materials.map((material) => (
             <Card
-              color={material.is_active}
+              color={material.is_active ? '#66BB6A' : '#666'}
               onClick={() => handleRedirect(material)}
               key={`${material.id}`}
               title={material.description}
@@ -47,7 +47,7 @@ const MaterialsCard = ({ materials, error }) => {
                     }).format(material.price)}
                   </p>
                 </MaterialPrice>
-                <MaterialFooter color={material.is_active}>
+                <MaterialFooter color={material.is_active ? '#66BB6A' : '#666'}>
                   <p>{material.is_active ? 'Ativo' : 'Inativo'}</p>
                 </MaterialFooter>
               </Body>
