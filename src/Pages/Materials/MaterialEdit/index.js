@@ -33,7 +33,7 @@ const MaterialEdit = () => {
     setError(null);
 
     const { name, supplier_name, price, description, is_active, id } = material;
-    if (!name || supplier_name || !price) {
+    if (!name || !supplier_name || !price) {
       setLoading(false);
       return setError('Preenchimento obrigatório');
     }
