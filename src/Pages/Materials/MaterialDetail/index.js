@@ -14,10 +14,13 @@ import {
   FaFileExcel,
   FaFileInvoiceDollar,
   FaCalendarAlt,
+  FaUserTie,
 } from 'react-icons/fa';
 
 import NotFound from '../../NotFound';
 import { LoaderSpinner } from '../../../components';
+
+import { options } from '../../../utils';
 
 import { removeMaterial, showMaterial } from '../../../services/material';
 
@@ -35,6 +38,7 @@ import {
   Main,
   Card,
   Name,
+  SupplierName,
   Price,
   Description,
   Since,
@@ -165,6 +169,10 @@ const MaterialDetail = () => {
             <FaFileContract size={24} />
             <p>{material.name}</p>
           </Name>
+          <SupplierName>
+            <FaUserTie size={24} />
+            <p>{material.supplier_name}</p>
+          </SupplierName>
           <Description>
             <FaFileAlt size={24} />
             <p>{material.description || 'Não informado'}</p>
@@ -172,9 +180,7 @@ const MaterialDetail = () => {
           <Price>
             <FaFileInvoiceDollar size={24} />
             <p>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency', currency: 'BRL'
-              }).format(material.price)}
+              {Intl.NumberFormat('pt-BR', options.REAL).format(material.price)}
             </p>
           </Price>
           <Since>

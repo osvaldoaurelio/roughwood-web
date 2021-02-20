@@ -39,7 +39,7 @@ export const GoBack = styled.div`
   }
 `;
 
-export const ClientName = styled.div`
+export const OrderStatus = styled.div`
   font-size: 1.6rem;
 `;
 
@@ -57,6 +57,26 @@ export const Action = styled.div`
       left: 1.75rem;
       cursor: initial;
     }
+  }
+`;
+
+export const BtnInvoice = styled.p`
+  margin-right: ${({ primaryColor }) => primaryColor ? '0' : '1rem'};
+  padding: 0.75rem ${({ primaryColor }) => primaryColor ? '12px' : '2rem'};
+  border-radius: 4px;
+  font-size: 1.25rem;
+  border: 2px solid #ccc;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s all;
+  background-color: ${({ primaryColor, theme }) => primaryColor
+    ? theme.colors.primary
+    : theme.colors.secondary};
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -130,7 +150,6 @@ export const Card = styled.div`
   border-radius: 4px;
   background-color: ${({ theme }) => (theme.title === 'light' ? '#fff' : '#222')};
   border-top: 16px solid ${({ color }) => color};
-  opacity: ${({ color }) => color === '#66BB6A' ? 1 : 0.6};
   cursor: pointer;
 
   &:hover {
@@ -138,77 +157,110 @@ export const Card = styled.div`
   }
 `;
 
-export const Name = styled.div`
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: baseline;
+export const OrderId = styled.div`
+  font-size: 1rem;
+  margin-bottom: 2rem;
+`;
+
+export const OrderDescription = styled.div`
+  font-size: 1.2rem;
   font-weight: 700;
-
-  svg {
-    margin-right: 0.5rem;
-    min-width: 14px;
-  }
+  margin-bottom: 2rem;
+  width: 100%;
 `;
 
-export const SupplierName = styled.div`
-  font-size: 1.25rem;
-  margin-bottom: 4rem;
-  display: flex;
-  align-items: baseline;
-
-  svg {
-    margin-right: 0.5rem;
-    min-width: 14px;
-  }
-`;
-
-export const Description = styled.div`
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: baseline;
-
-  svg {
-    margin-right: 0.5rem;
-    min-width: 14px;
-  }
-`;
-
-export const Price = styled.div`
-  font-size: 1.75rem;
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: baseline;
-
-  svg {
-    margin-right: 0.5rem;
-    min-width: 14px;
-  }
-`;
-
-export const Since = styled.div`
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: baseline;
-
-  svg {
-    margin-right: 0.5rem;
-    min-width: 14px;
-  }
-`;
-
-export const Footer = styled.div`
-  margin: 0 -2rem -2rem -2rem;
-  padding: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: ${({ color }) => color};
-  background-color: ${({ color }) => color};
+export const OrderRelated = styled.div`
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  width: 100%;
 
   p {
-    text-align: center;
-    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
   }
 `;
+
+export const OrderDates = styled.div`
+  font-size: 1.2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #666;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+`;
+
+export const OrderUsedMaterials = styled.div`
+  max-height: 45vh;
+  overflow-y: auto;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #666;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+
+    tr {
+      transition: 0.3s all;
+
+      td {
+        padding: 0.5rem;
+        font-size: 1.125rem;
+
+        &:nth-child(1) {
+          max-width: 470px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        &:nth-child(3) {
+          text-align: center;
+        }
+        &:nth-child(2),
+        &:nth-child(4) {
+          text-align: right;
+          max-width: 200px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+      }
+
+      &:nth-child(2n) {
+        background-color: ${({ theme }) => theme.title === 'light' ? '#0002' : '#fff2'};
+      }
+
+      &:hover {
+        background-color: ${({ theme }) => theme.title === 'light' ? '#0004' : '#fff4'};
+      }
+    }
+  }
+`;
+
+export const OrderPrice = styled.div`
+  margin: 0.7rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  justify-content: flex-end;
+  width: 100%;
+
+  p {
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+`;
+
+

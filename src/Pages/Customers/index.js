@@ -62,7 +62,7 @@ const Customers = () => {
           <Input
             type="text"
             placeholder="Buscar clientes"
-            title="Clique para pesquisar clientes"
+            title="Clique para pesquisar clientes por nome ou CPF"
             value={searchTerm}
             onChange={handleSearchTerm}
           />

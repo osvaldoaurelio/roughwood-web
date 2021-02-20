@@ -105,7 +105,7 @@ const EmployeeDetail = () => {
       setLoading(true);
       setError(null);
       try {
-        resetPassword(params);
+        await resetPassword(params);
         setLoading(false);
         await swal({ title: 'Password resetado com sucesso', icon: 'success' });
       } catch ({ response }) {
@@ -194,9 +194,6 @@ const EmployeeDetail = () => {
               </MenuItem>
             </SubMenu>
           </Menu>
-          <Button type="button" title="Clique para criar uma nova Ordem de Serviço para este funcionário">
-            Nova Ordem de Serviço
-          </Button>
         </Action>
 
       </Header>

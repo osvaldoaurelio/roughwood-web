@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { FaFileAlt, FaFileContract, FaFileInvoiceDollar } from 'react-icons/fa';
+import { FaFileAlt, FaFileContract, FaFileInvoiceDollar, FaUserTie } from 'react-icons/fa';
 
 import { LoaderSpinner } from '../../../components';
 
@@ -12,6 +12,7 @@ import {
   ErrorContainer,
   NoInputError,
   Name,
+  SupplierName,
   Description,
   FormControl,
   Price,
@@ -96,6 +97,18 @@ const MaterialEdit = ({ material, setMaterial, ...props}) => {
                   : 'Digite o nome do material'}
               />
             </Name>
+            <SupplierName>
+              <FaUserTie size={24} />
+              <Input
+                autoFocus={true}
+                onChange={handleInputChange}
+                value={material?.supplier_name}
+                error={props.error || error}
+                name="supplier_name"
+                placeholder="Nome do fornecedor"
+                title="Digite o nome do fornecedor"
+              />
+            </SupplierName>
             <Description>
               <FaFileAlt size={24} />
               <TextArea

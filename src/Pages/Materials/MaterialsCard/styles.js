@@ -4,8 +4,7 @@ export const Main = styled.section`
   margin: 1rem 0;
   padding: 1rem 0;
   display: grid;
-  column-gap: 2%;
-  row-gap: 5%;
+  gap: 2%;
   grid-template-columns: repeat(5,minmax(15%, 19%));
 `;
 
@@ -16,7 +15,7 @@ export const Card = styled.div`
   border: 1px solid #666;
   background-color: ${({ theme }) => (theme.title === 'light' ? '#fff' : '#222')};
   border-top: 8px solid ${({ color }) => color};
-  opacity: ${({ color }) => color ? 1 : 0.6};
+  opacity: ${({ color }) => color === '#66BB6A' ? 1 : 0.6};
   cursor: pointer;
 
   &:hover {
@@ -30,14 +29,25 @@ export const Body = styled.div`
 
 export const MaterialName = styled.div`
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   font-weight: 700;
 
-p {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+`;
+
+export const MaterialSupplierName = styled.div`
+  font-size: 0.8rem;
+  margin-bottom: 1.75rem;
+
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 `;
 
 export const MaterialDescription = styled.div`

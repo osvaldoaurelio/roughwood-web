@@ -62,7 +62,7 @@ const Employees = () => {
           <Input
             type="text"
             placeholder="Buscar funcionários"
-            title="Clique para pesquisar funcionários"
+            title="Clique para pesquisar funcionários por nome ou username"
             value={searchTerm}
             onChange={handleSearchTerm}
           />

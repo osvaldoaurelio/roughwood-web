@@ -30,14 +30,14 @@ const MaterialCreate = () => {
     setLoading(true);
     setError(null);
 
-    const { name, price, description, Is_active } = material;
-    if (!name || !price) {
+    const { name, supplier_name, price, description, is_active } = material;
+    if (!name || !supplier_name || !price) {
       setLoading(false);
       return setError('Preenchimento obrigatório');
     }
     try {
       const { material } = await storeMaterial(
-        { name, price, description, Is_active },
+        { name, supplier_name, price, description, is_active },
       );
       setMaterial(material);
       setLoading(false);

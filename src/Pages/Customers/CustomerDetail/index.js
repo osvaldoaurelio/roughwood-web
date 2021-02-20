@@ -163,7 +163,11 @@ const CustomerDetail = () => {
               </MenuItem>
             </SubMenu>
           </Menu>
-          <Button type="button" title="Clique para criar uma nova Ordem de Serviço para este cliente">
+          <Button
+            type="button"
+            title="Clique para criar uma nova Ordem de Serviço para este cliente"
+            onClick={() => history.push('/orders/create', { id: customer.id, name: customer.name })}
+          >
             Nova Ordem de Serviço
           </Button>
         </Action>

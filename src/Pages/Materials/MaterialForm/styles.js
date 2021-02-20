@@ -52,6 +52,17 @@ export const Name = styled.div`
   }
 `;
 
+export const SupplierName = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+
+  svg {
+    min-width: 20px;
+  }
+`;
+
 export const Description = styled.div`
   display: flex;
   align-items: center;
@@ -80,14 +91,22 @@ export const Price = styled.div`
 `;
 
 export const Status = styled.div`
+  border: 1px solid #3333;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+  padding: 0;
   position: relative;
   cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover {
+    border: 1px solid #666;
+  }
 
   input[type=checkbox] {
+    cursor: pointer;
     position: absolute;
     opacity: 0;
     height: 0;
@@ -96,7 +115,7 @@ export const Status = styled.div`
 
   label {
     cursor: pointer;
-    padding: 0 1rem;
+    padding: 1rem;
     font-size: 1.25rem;
   }
 `;

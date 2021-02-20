@@ -4,8 +4,7 @@ export const Main = styled.section`
   margin: 1rem 0;
   padding: 1rem 0;
   display: grid;
-  column-gap: 2%;
-  row-gap: 6%;
+  gap: 2%;
   grid-template-columns: repeat(3,minmax(auto, 32%));
 `;
 

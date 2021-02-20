@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
-import { FaRegTimesCircle } from 'react-icons/fa';
+import { FaSearch, FaRegTimesCircle } from 'react-icons/fa';
 
 import MaterialsCard from './MaterialsCard';
 import { LoaderSpinner } from '../../components';
@@ -62,7 +61,7 @@ const Materials = () => {
           <Input
             type="text"
             placeholder="Buscar materiais"
-            title="Clique para pesquisar materiais"
+            title="Clique para pesquisar materiais por nome ou descrição"
             value={searchTerm}
             onChange={handleSearchTerm}
           />

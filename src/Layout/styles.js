@@ -6,5 +6,6 @@ export const Container = styled.section`
 `;
 
 export const Main = styled.main`
+  position: relative;
   flex: 1;
 `;

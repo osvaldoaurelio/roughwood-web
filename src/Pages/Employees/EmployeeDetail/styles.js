@@ -70,28 +70,9 @@ export const Input = styled.input`
   background-color: ${({ theme }) => (theme.title === 'light' ? '#fff' : '#333')};
 `;
 
-export const Button = styled.button`
-  background-color: ${({ theme }) => (theme.colors.primary)};
-  color: #fff;
-  font-size: 20px;
-  line-height: 24px;
-  padding: 10px 12px;
-  height: 50px;
-  width: 100%;
-  border-radius: 4px;
-  outline: none;
-  transition: 0.3s all;
-  cursor: pointer;
-
-  &:hover {
-    opacity: ${({ theme }) => (theme.title === 'light' ? 0.8 : 0.4)};
-  }
-`;
-
 export const Menu = styled.div`
   position: relative;
   min-width: 148px;
-  margin-right: 0.5rem;
   padding: 0.5rem;
   font-size: 1.25rem;
 `;
@@ -109,11 +90,10 @@ export const MenuTitle = styled.div`
 
 export const SubMenu = styled.div`
   position: absolute;
-  left: 0;
+  right: 0;
   top: 44px;
   background-color: ${({ theme }) => (theme.title === 'light' ? '#ddd' : '#222')};
   min-width: 220px;
-  margin-right: 0.5rem;
   border: 1px solid #666;
   display: ${({ active }) => (active ? 'block' : 'none')};
 `;
@@ -179,7 +159,6 @@ export const Name = styled.div`
   font-size: 1.25rem;
   display: flex;
   align-items: center;
-  /* margin-bottom: 0.5rem; */
   font-weight: 700;
 
   svg {
@@ -192,7 +171,6 @@ export const CPF = styled.div`
   font-size: 1rem;
   display: flex;
   align-items: center;
-  /* margin-bottom: 0.5rem; */
 
   svg {
     margin-right: 0.5rem;
@@ -201,7 +179,6 @@ export const CPF = styled.div`
 `;
 
 export const Address = styled.div`
-  /* margin-bottom: 0.5rem; */
   display: flex;
   align-items: center;
 
@@ -214,7 +191,6 @@ export const Address = styled.div`
 export const Phone = styled.div`
   display: flex;
   align-items: center;
-  /* margin-bottom: 0.5rem; */
 
   svg {
     margin-right: 0.5rem;

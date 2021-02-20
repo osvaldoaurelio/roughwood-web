@@ -1,11 +1,14 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { options } from '../../../utils';
+
 import {
   Main,
   Card,
   Body,
   MaterialName,
+  MaterialSupplierName,
   MaterialPrice,
   MaterialDescription,
   MaterialFooter,
@@ -37,14 +40,15 @@ const MaterialsCard = ({ materials, error }) => {
                 <MaterialName>
                   <p>{material.name}</p>
                 </MaterialName>
+                <MaterialSupplierName>
+                  <p>{material.supplier_name}</p>
+                </MaterialSupplierName>
                 <MaterialDescription>
                   <p>{material.description || 'Não informado'}</p>
                 </MaterialDescription>
                 <MaterialPrice>
                   <p>
-                    {Intl.NumberFormat('pt-BR', {
-                      style: 'currency', currency: 'BRL'
-                    }).format(material.price)}
+                    {Intl.NumberFormat('pt-BR', options.REAL ).format(material.price)}
                   </p>
                 </MaterialPrice>
                 <MaterialFooter color={material.is_active ? '#66BB6A' : '#666'}>

@@ -3,10 +3,10 @@ import { useParams, useHistory } from 'react-router-dom';
 import { FaAngleLeft } from 'react-icons/fa';
 
 import NotFound from '../../NotFound';
-import MaterialForm from '../MaterialForm';
+import OrderForm from '../OrderForm';
 import { LoaderSpinner } from '../../../components';
 
-import { showMaterial, updateMaterial } from '../../../services/material';
+import { showOrder, updateOrder } from '../../../services/order';
 
 import {
   Container,
@@ -20,31 +20,28 @@ import {
   Main,
 } from './styles';
 
-const MaterialEdit = () => {
+const OrderEdit = () => {
   const params = useParams();
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [material, setMaterial] = useState({});
+  const [order, setOrder] = useState({});
 
-  const handleUpdateMaterial = useCallback(async () => {
+  const handleUpdateOrder = useCallback(async () => {
     setLoading(true);
     setError(null);
 
-    const { name, supplier_name, price, description, is_active, id } = material;
-    if (!name || supplier_name || !price) {
-      setLoading(false);
-      return setError('Preenchimento obrigatório');
-    }
+    const { id, user_id, description } = order;
+
     try {
-      const { material } = await updateMaterial(
-        { name, supplier_name, price, description, is_active },
+      const { order } = await updateOrder(
+        { user_id, description },
         { id },
       );
-      setMaterial(material);
+      setOrder(order);
       setLoading(false);
-      history.push(`/materials/${material.id}`);
+      history.push(`/orders/${id}`);
     } catch ({ response }) {
       setError(response.data?.error || response?.statusText);
     } finally {
@@ -52,13 +49,13 @@ const MaterialEdit = () => {
     }
   });
 
-  const handleShowMaterial = async () => {
+  const handleShowOrder = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const { material } = await showMaterial(params);
-      setMaterial(material);
+      const { order } = await showOrder(params);
+      setOrder(order);
     } catch ({ response }) {
       setError(response);
     } finally {
@@ -67,9 +64,9 @@ const MaterialEdit = () => {
   };
 
   useEffect(() => {
-    handleShowMaterial();
+    handleShowOrder();
 
-    return () => setMaterial({});
+    return () => setOrder({});
   }, []);
 
   if (error?.status === 404) {
@@ -83,20 +80,20 @@ const MaterialEdit = () => {
       ) : (
         <Header>
           <Title>
-            <GoBack onClick={() => history.push('/materials')} title="Todos os materiais">
+            <GoBack onClick={() => history.push('/orders')} title="Todas as ordens">
               <FaAngleLeft size={20} />
-              Materiais
+              Ordens
             </GoBack>
-            <Name>Editar Material: {material.name}</Name>
+            <Name>Editar Ordem: {order.name}</Name>
           </Title>
           <Action>
-            <Cancel onClick={() => history.replace(`/materials/${params.id}`)} title="Clique para cancelar">
+            <Cancel onClick={() => history.replace(`/orders/${params.id}`)} title="Clique para cancelar">
               Cancelar
             </Cancel>
             <Button
               type="button"
-              onClick={handleUpdateMaterial}
-              title="Clique para salvar as alterações deste material"
+              onClick={handleUpdateOrder}
+              title="Clique para salvar as alterações desta ordem"
             >
               Salvar
             </Button>
@@ -104,10 +101,10 @@ const MaterialEdit = () => {
         </Header>
       )}
       <Main>
-        <MaterialForm
-          material={material}
-          setMaterial={setMaterial}
-          updateMaterial={updateMaterial}
+        <OrderForm
+          order={order}
+          setOrder={setOrder}
+          updateOrder={updateOrder}
           error={error}
           setError={setError}
         />
@@ -116,4 +113,4 @@ const MaterialEdit = () => {
   );
 };
 
-export default MaterialEdit;
+export default OrderEdit;

@@ -18,6 +18,10 @@ import MaterialCreate from '../Pages/Materials/MaterialCreate';
 import MaterialDetail from '../Pages/Materials/MaterialDetail';
 
 import Orders from '../Pages/Orders';
+import OrderEdit from '../Pages/Orders/OrderEdit';
+import OrderCreate from '../Pages/Orders/OrderCreate';
+import OrderDetail from '../Pages/Orders/OrderDetail';
+
 import NotFound from '../Pages/NotFound';
 
 const PrivateRoutes = () => (
@@ -39,6 +43,9 @@ const PrivateRoutes = () => (
     <Route path="/materials/:id" component={MaterialDetail} />
     <Route path="/materials" component={Materials} />
 
+    <Route path="/orders/create" exact component={OrderCreate} />
+    <Route path="/orders/:id/edit" component={OrderEdit} />
+    <Route path="/orders/:id" component={OrderDetail} />
     <Route path="/orders" component={Orders} />
 
     <Route path={['/signup', '/signin']}>

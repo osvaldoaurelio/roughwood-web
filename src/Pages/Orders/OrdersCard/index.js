@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import { FaClipboardList, FaClipboardCheck } from 'react-icons/fa';
 
-import { status } from '../../../utils';
+import { status, options } from '../../../utils';
 
 import {
   Main,
@@ -38,10 +38,11 @@ const OrdersCard = ({ orders }) => {
               <p>{`000000${order.id}`.slice(-7)}</p>
             </OrderId>
             <OrderRelated>
-              <p>{order.employee?.name || order.customer?.name || 'Não atribuído'}</p>
+              <p>{order.customer?.name || 'Não atribuído'}</p>
+              <p>{order.employee?.name || 'Não atribuído'}</p>
             </OrderRelated>
             <OrderDescription>
-              <p>{order.description}</p>
+              <p>{order.description || 'Sem descrição'}</p>
             </OrderDescription>
             <OrderDates>
               <div>
@@ -55,9 +56,7 @@ const OrdersCard = ({ orders }) => {
             </OrderDates>
             <OrderPrice>
               <p>
-                {Intl.NumberFormat('pt-BR', {
-                  style: 'currency', currency: 'BRL'
-                }).format(order.price)}
+                {Intl.NumberFormat('pt-BR', options.REAL).format(order.total_price)}
               </p>
             </OrderPrice>
             <OrderFooter
