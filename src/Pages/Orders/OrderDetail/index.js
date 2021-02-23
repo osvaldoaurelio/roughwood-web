@@ -233,7 +233,7 @@ const OrderDetail = () => {
                 (a, b) => (a.stock_material.name?.toLowerCase() > b.stock_material.name?.toLowerCase() ? 1 : -1)
               ).map(
                 ({ id, quantity: qntt, stock_material }) => (
-                  <tr key={`${id}`}>
+                  stock_material && <tr key={`${id}`}>
                     <td title={stock_material?.name}>{stock_material?.name}</td>
                     <td title={Intl.NumberFormat('pt-BR', options.REAL).format(stock_material?.price)}>
                       {Intl.NumberFormat('pt-BR', options.REAL).format(stock_material?.price)}
