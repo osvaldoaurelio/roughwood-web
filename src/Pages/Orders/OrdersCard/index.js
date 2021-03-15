@@ -42,7 +42,7 @@ const OrdersCard = ({ orders }) => {
               <p>{order.employee?.name || 'Não atribuído'}</p>
             </OrderRelated>
             <OrderDescription>
-              <p>{order.description?.replace(/\\n/g, '<br />') || 'Sem descrição'}</p>
+              <p>{order.description || 'Sem descrição'}</p>
             </OrderDescription>
             <OrderDates>
               <div>

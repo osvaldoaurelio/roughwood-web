@@ -211,7 +211,7 @@ const OrderDetail = () => {
             <p>Número da ordem de serviço: {`000000${order.id}`.slice(-7)}</p>
           </OrderId>
           <OrderDescription>
-            <p>Descrição: {order.description || 'Sem descrição'}</p>
+            <p>Descrição: {order.description?.replace(/\\n/g, '<br />') || 'Sem descrição'}</p>
           </OrderDescription>
           <OrderRelated>
             <p>Cliente: {order.customer?.name || 'Não atribuído'}</p>
