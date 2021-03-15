@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { formatDistanceToNow, format, parseISO } from 'date-fns';
 import { ptBR as locale } from 'date-fns/locale';
+import Parser from 'html-react-parser';
 import swal from 'sweetalert';
 
 import {
@@ -211,7 +212,7 @@ const OrderDetail = () => {
             <p>Número da ordem de serviço: {`000000${order.id}`.slice(-7)}</p>
           </OrderId>
           <OrderDescription>
-            <p>Descrição: {order.description?.replace(/\\n/g, '<br />') || 'Sem descrição'}</p>
+            <p>Descrição: {Parser(order.description?.replace(/\\n/g, '<br />') || 'Sem descrição')}</p>
           </OrderDescription>
           <OrderRelated>
             <p>Cliente: {order.customer?.name || 'Não atribuído'}</p>
